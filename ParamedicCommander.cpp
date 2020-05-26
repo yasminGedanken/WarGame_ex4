@@ -1,37 +1,17 @@
 #include "ParamedicCommander.hpp"
 
 void ParamedicCommander::act(std::vector<std::vector<Soldier*>>& board, std::pair<int, int> location) {
-	if (location.first + 1 < board.size() && board[location.first + 1][location.second] != nullptr
-		&& board[location.first + 1][location.second]->getPlayer() == board[location.first][location.second]->getPlayer())
-	{
-		int life = board[location.first + 1][location.second]->getHP();
-		int fullLife = board[location.first + 1][location.second]->getFullHP();
-		board[location.first + 1][location.second]->setHP(fullLife - life);
-	}
-
-	if (location.first - 1 >= 0 && board[location.first - 1][location.second] != nullptr
-		&& board[location.first - 1][location.second]->getPlayer() == board[location.first][location.second]->getPlayer())
-	{
-		int life = board[location.first - 1][location.second]->getHP();
-		int fullLife = board[location.first - 1][location.second]->getFullHP();
-		board[location.first - 1][location.second]->setHP(fullLife - life);
-	}
-
-	if (location.second + 1 < board[0].size() && board[location.first][location.second + 1] != nullptr
-		&& board[location.first][location.second + 1]->getPlayer() == board[location.first][location.second]->getPlayer())
-	{
-		int life = board[location.first][location.second + 1]->getHP();
-		int fullLife = board[location.first][location.second + 1]->getFullHP();
-		board[location.first][location.second + 1]->setHP(fullLife - life);
-	}
-
-	if (location.second - 1 >= 0 && board[location.first][location.second - 1] != nullptr
-		&& board[location.first][location.second - 1]->getPlayer() == board[location.first][location.second]->getPlayer())
-	{
-		int life = board[location.first][location.second - 1]->getHP();
-		int fullLife = board[location.first][location.second - 1]->getFullHP();
-		board[location.first][location.second - 1]->setHP(fullLife - life);
-	}
+	for (int i = location.first - 1; i < location.first + 2; i++)
+		for (int j = location.second - 1; j < location.second + 2; j++) {
+			if (i >= 0 && i < board.size() && j >= 0 && j < board[0].size()) {
+				if (board[i][j] != nullptr && board[i][j]->getPlayer() == board[location.first][location.second]->getPlayer()
+					&& board[i][j] != board[location.first][location.second]) {
+					int life = board[i][j]->getHP();
+					int fullLife = board[i][j]->getFullHP();
+					board[i][j]->setHP(fullLife - life);
+				}
+			}
+		}
 
 	actSoldier(board, location);
 		return;
