@@ -4,11 +4,11 @@
 namespace WarGame {
 	Soldier*& Board::operator[](std::pair<int, int> location) {
 
-		if (location.first <0 || location.first>board.size() || location.second <0 || location.second >board[0].size())
+		if (location.first <0 || location.first>=board.size() || location.second <0 || location.second >=board[0].size())
 			throw std::invalid_argument("out_of_range");
 
-		if(board[location.first][location.second]!=nullptr )
-			throw std::invalid_argument("not good location");
+	/*	if(*board[location.first][location.second]!=nullptr)
+			throw std::invalid_argument("not goood locatin");*/
 			
 		return board[location.first][location.second];
 		

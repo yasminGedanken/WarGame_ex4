@@ -13,5 +13,6 @@ using namespace std;
 int main() {
 	WarGame::DemoGame demoGame;
 	cout << "The winner is:\n " << demoGame.play() << endl;
+    cout << "end game!!!!!!!!!!!!!!" << endl;
     return 0;
 }

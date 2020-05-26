@@ -34,9 +34,12 @@ float FootCommander::distance(int x1, int y1, int x2, int y2)
 void FootCommander::actSoldier(std::vector<std::vector<Soldier*>>& board, std::pair<int, int> location) {
 	for (int i = 0; i < board.size(); i++)
 		for (int j = 0; j < board[i].size(); j++) {
-			FootSoldier* s = dynamic_cast<FootSoldier*>(board[i][j]);
-			if (s)
-				if (board[i][j]->getPlayer() == board[location.first][location.second]->getPlayer())
-					board[i][j]->act(board, { i,j });
+			if (board[i][j] != nullptr) {
+				FootSoldier* s = dynamic_cast<FootSoldier*>(board[i][j]);
+				FootCommander* c = dynamic_cast<FootCommander*>(board[i][j]);
+				if (s && !c)
+					if (board[i][j]->getPlayer() == board[location.first][location.second]->getPlayer())
+						board[i][j]->act(board, { i,j });
+			}
 		}
 }

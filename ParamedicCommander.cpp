@@ -39,9 +39,12 @@ void ParamedicCommander::act(std::vector<std::vector<Soldier*>>& board, std::pai
 void ParamedicCommander::actSoldier(std::vector<std::vector<Soldier*>>& board, std::pair<int, int> location) {
 	for (int i = 0; i < board.size(); i++)
 		for (int j = 0; j < board[i].size(); j++) {
-			Paramedic* s = dynamic_cast<Paramedic*>(board[i][j]);
-				if (s)
+			if (board[i][j] != nullptr) {
+				Paramedic* s = dynamic_cast<Paramedic*>(board[i][j]);
+				ParamedicCommander* c = dynamic_cast<ParamedicCommander*>(board[i][j]);
+				if (s && !c)
 					if (board[i][j]->getPlayer() == board[location.first][location.second]->getPlayer())
 						board[i][j]->act(board, { i,j });
+			}
 		}
 }

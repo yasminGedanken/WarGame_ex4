@@ -22,9 +22,12 @@ void SniperCommander::act(std::vector<std::vector<Soldier*>>& board, std::pair<i
 void SniperCommander::actSoldier(std::vector<std::vector<Soldier*>>& board, std::pair<int, int> location) {
 	for (int i = 0; i < board.size(); i++)
 		for (int j = 0; j < board[i].size(); j++) {
-			Sniper* s = dynamic_cast<Sniper*>(board[i][j]);
-			if (s)
-				if (board[i][j]->getPlayer() == board[location.first][location.second]->getPlayer())
-					board[i][j]->act(board, { i,j });
+			if (board[i][j] != nullptr) {
+				Sniper* s = dynamic_cast<Sniper*>(board[i][j]);
+				SniperCommander* c = dynamic_cast<SniperCommander*>(board[i][j]);
+				if (s && !c)
+					if (board[i][j]->getPlayer() == board[location.first][location.second]->getPlayer())
+						board[i][j]->act(board, { i,j });
+			}
 		}
 }
