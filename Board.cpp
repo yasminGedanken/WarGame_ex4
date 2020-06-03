@@ -16,7 +16,7 @@ namespace WarGame {
 	}
 
 	Soldier* Board::operator[](std::pair<int, int> location) const {
-		if (location.first <0 || location.first>board.size() || location.second <0 || location.second >board[0].size())
+		if (location.first <0 || location.first>=board.size() || location.second <0 || location.second >=board[0].size())
 			throw std::invalid_argument("out_of_range");
 
 		if (board[location.first][location.second] == nullptr)
@@ -30,7 +30,7 @@ namespace WarGame {
    //  * There is already another soldier (of this or the other player) in the target location.
 	void Board::move(uint player_number, std::pair<int, int> source, MoveDIR direction) {
 
-		if (source.first <0 || source.first> board.size() || source.second <0 || source.second > board[0].size())
+		if (source.first <0 || source.first>= board.size() || source.second <0 || source.second >= board[0].size())
 			throw std::invalid_argument("out_of_range");
 
 		if (board[source.first][source.second] == nullptr)
@@ -52,15 +52,15 @@ namespace WarGame {
 		switch (direction)
 		{
 		case Up:
-			if (source.first+1>=0 && (board[source.first + 1][source.second] == nullptr))
+			if ( source.first+1 < board.size() && (board[source.first + 1][source.second] == nullptr))
 				ans = true;
 			break;
 		case Down:
-			if (source.first - 1 <=board.size() && (board[source.first - 1][source.second] == nullptr))
+			if (source.first - 1 >=0 && (board[source.first - 1][source.second] == nullptr))
 				ans = true;
 			break;
 		case Right:
-			if (source.second + 1 <= board[0].size() && (board[source.first][source.second+1] == nullptr))
+			if (source.second + 1 < board[0].size() && (board[source.first][source.second+1] == nullptr))
 				ans = true;
 			break;
 		case Left:
