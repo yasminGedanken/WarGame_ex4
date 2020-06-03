@@ -19,7 +19,7 @@ void FootCommander::act(std::vector<std::vector<Soldier*>>& board, std::pair<int
 			}
 		}
 	board[close.first][close.second]->setHP(-20);
-	if (board[close.first][close.second]->getHP() == 0) board[close.first][close.second] = nullptr;
+	if (board[close.first][close.second]->getHP() <= 0) board[close.first][close.second] = nullptr;
 	actSoldier(board, location);
 	return;
 }

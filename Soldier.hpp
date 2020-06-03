@@ -14,7 +14,7 @@ private:
 
 public:
 	virtual ~Soldier() {};
-	virtual void act(std::vector<std::vector<Soldier*>>& board, std::pair<int, int> location) {};
+	virtual void act(std::vector<std::vector<Soldier*>>& board, std::pair<int, int> location) =0;
 
 	Soldier( int hp = 0, int fullhp=0, int damage = 0,int player=0) 
 		:HP(hp),fullHP(fullhp), Damage(damage),  Player(player){}

@@ -9,6 +9,7 @@ namespace WarGame {
 
 	/*	if(*board[location.first][location.second]!=nullptr)
 			throw std::invalid_argument("not goood locatin");*/
+	
 			
 		return board[location.first][location.second];
 		

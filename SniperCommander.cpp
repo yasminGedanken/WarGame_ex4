@@ -14,7 +14,7 @@ void SniperCommander::act(std::vector<std::vector<Soldier*>>& board, std::pair<i
 				}
 		}
 	board[maxHP.first][maxHP.second]->setHP(-100);
-	if (board[maxHP.first][maxHP.second]->getHP() == 0) board[maxHP.first][maxHP.second] = nullptr;
+	if (board[maxHP.first][maxHP.second]->getHP() <= 0) board[maxHP.first][maxHP.second] = nullptr;
 	actSoldier(board, location);
 		return;
 	}

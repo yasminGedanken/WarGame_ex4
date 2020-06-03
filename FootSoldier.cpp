@@ -20,7 +20,7 @@ void FootSoldier::act(std::vector<std::vector<Soldier*>>& board, std::pair<int, 
 			}
 		}
 	board[close.first][close.second]->setHP(-10);
-	if (board[close.first][close.second]->getHP() == 0) board[close.first][close.second] = nullptr;
+	if (board[close.first][close.second]->getHP() <= 0) board[close.first][close.second] = nullptr;
 		return;
 	}
 // Function to calculate distance 

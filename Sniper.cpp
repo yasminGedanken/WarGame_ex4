@@ -13,6 +13,6 @@ void Sniper::act(std::vector<std::vector<Soldier*>>& board, std::pair<int, int> 
 			}
 		}
 	board[maxHP.first][maxHP.second]->setHP(-50);
-	if (board[maxHP.first][maxHP.second]->getHP() == 0) board[maxHP.first][maxHP.second] = nullptr;
+	if (board[maxHP.first][maxHP.second]->getHP() <= 0) board[maxHP.first][maxHP.second] = nullptr;
 		return;
 	}
