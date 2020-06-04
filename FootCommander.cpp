@@ -8,7 +8,7 @@ void FootCommander::act(std::vector<std::vector<Soldier*>>& board, std::pair<int
 	for (int i = 0; i < board.size(); i++)
 		for (int j = 0; j < board[i].size(); j++) {
 			if (board[i][j] != nullptr) {
-				if (board[i][j] != board[location.first][location.second])
+				
 					if (board[i][j]->getPlayer() != board[location.first][location.second]->getPlayer()) {
 						float temp = distance(i, j, location.first, location.second);
 						if (temp < min) {
@@ -18,9 +18,12 @@ void FootCommander::act(std::vector<std::vector<Soldier*>>& board, std::pair<int
 					}
 			}
 		}
-	board[close.first][close.second]->setHP(-20);
-	if (board[close.first][close.second]->getHP() <= 0) board[close.first][close.second] = nullptr;
-	actSoldier(board, location);
+	if (min != INFINITY) {
+		board[close.first][close.second]->setHP(-20);
+		if (board[close.first][close.second]->getHP() <= 0) board[close.first][close.second] = nullptr;
+		actSoldier(board, location);
+		return;
+	}
 	return;
 }
 // Function to calculate distance 

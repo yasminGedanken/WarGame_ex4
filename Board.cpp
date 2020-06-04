@@ -39,6 +39,9 @@ namespace WarGame {
 		if (board[source.first][source.second]->getPlayer() != player_number)
 			throw std::invalid_argument("not belongs to this player");
 
+		/*if (board[source.first][source.second]->getHP() == 0)
+			throw std::invalid_argument("this player is died");*/
+
 		if(!canMove(source, direction)) //check if he can move
 			throw std::invalid_argument("bad move!");
 

@@ -11,6 +11,7 @@ void Paramedic::act(std::vector<std::vector<Soldier*>>& board, std::pair<int, in
 						int life = board[i][j]->getHP();
 						int fullLife = board[i][j]->getFullHP();
 						board[i][j]->setHP(fullLife - life);
+
 					}
 				}
 			}

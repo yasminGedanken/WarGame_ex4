@@ -13,10 +13,13 @@ void SniperCommander::act(std::vector<std::vector<Soldier*>>& board, std::pair<i
 					maxHP.first = i; maxHP.second = j;
 				}
 		}
-	board[maxHP.first][maxHP.second]->setHP(-100);
-	if (board[maxHP.first][maxHP.second]->getHP() <= 0) board[maxHP.first][maxHP.second] = nullptr;
-	actSoldier(board, location);
+	if (max != 0) {
+		board[maxHP.first][maxHP.second]->setHP(-100);
+		if (board[maxHP.first][maxHP.second]->getHP() <= 0) board[maxHP.first][maxHP.second] = nullptr;
+		actSoldier(board, location);
 		return;
+	}
+	return;
 	}
 
 void SniperCommander::actSoldier(std::vector<std::vector<Soldier*>>& board, std::pair<int, int> location) {
