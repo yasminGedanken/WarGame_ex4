@@ -20,7 +20,8 @@
 
 *ParamedicCommander - כמו חובש, אבל כשהוא זז, כל החובשים של אותו שחקן מרפאים את החיילים שנמצאים לידם.
 
-תכונות החיילים
+תכונות החיילים:
+
 *FootSoldier: initial health points=100, damage per activity=10.
 
 *FootCommander: initial health points=150, damage per activity=20.
